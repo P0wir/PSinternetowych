@@ -41,10 +41,23 @@ if check_url("https://www.meteoprog.pl/pl/weather/Olsztyn/"):
 
 url = f'https://api.gios.gov.pl/pjp-api/rest/data/getData/644'
 response1 = requests.get(url)
-
+lista3 = []
+lista4 = []
 if response1.status_code != 200:
   assert False
 
 data = json.loads(response1.content.decode('utf-8'))
-value = data['values'][2]
-print(f'Czas: {value["date"]}, wartosc odczytu: {value["value"]}')
+for x in range(min(len(data["values"]), 10)):
+    lista3.append(data['values'][x]['value'])
+    lista4.append(data['values'][x]['date'])
+
+
+
+nazwy = []
+for item in lista4:
+    nazwy.append(item[11:])
+plt.plot(lista3,nazwy)
+plt.xlabel('wartosc')
+plt.ylabel('godzina')
+plt.title('wartosc czujnika dla ostatnich 10 godzin')
+plt.show()
