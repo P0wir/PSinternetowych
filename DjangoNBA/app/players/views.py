@@ -1,0 +1,18 @@
+import django_filters
+from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
+from .models import Players
+from .serializers import PlayersSerializer
+
+class PlayersViewSet(viewsets.ModelViewSet):
+    serializer_class = PlayersSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    queryset = Players.objects.all()
+    search_fields = ['player_name', 'surname']
+    ordering_fields = ['player_name', 'surname', 'weight', 'height']
+    filter_backends = (django_filters.rest_framework.DjangoFilterBackend, SearchFilter, OrderingFilter)
+
