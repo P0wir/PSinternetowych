@@ -11,3 +11,7 @@ class Players(models.Model):
 
     def __str__(self):
         return f"{self.player_name} {self.surname}"
+
+    class Meta:
+        verbose_name = "Player"
+        verbose_name_plural = "Players"

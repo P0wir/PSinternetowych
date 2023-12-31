@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'teams',
     'players',
     'matches',
+    'news',
+    'schedule',
+    'Comments',
+    'bets',
 
 ]
 

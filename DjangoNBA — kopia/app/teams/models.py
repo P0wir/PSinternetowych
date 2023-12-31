@@ -9,3 +9,7 @@ class Teams(models.Model):
 
     def __str__(self):
         return f"{self.team_name}"
+
+    class Meta:
+        verbose_name = "Team"
+        verbose_name_plural = "Teams"

@@ -22,6 +22,11 @@ urlpatterns = [
     path('teams/', include('teams.urls')),
     path('players/', include('players.urls')),
     path('matches/', include('matches.urls')),
+    path('news/', include('news.urls')),
+    path('Schedule/', include('schedule.urls')),
+    path('Comments/', include('Comments.urls')),
+    path('bets/', include('bets.urls')),
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
