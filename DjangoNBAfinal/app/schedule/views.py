@@ -1,9 +1,8 @@
 import django_filters
 from rest_framework import viewsets
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import TokenAuthentication, BasicAuthentication
 from rest_framework.filters import SearchFilter, OrderingFilter
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from .models import Schedule
 from .serializers import ScheduleSerializer
 
@@ -15,4 +14,3 @@ class ScheduleViewSet(viewsets.ModelViewSet):
     search_fields = ['team_home__team_name', 'team_away__team_name', 'date', 'location']
     ordering_fields = ['team_home', 'team_away', 'date']
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend, SearchFilter, OrderingFilter)
-

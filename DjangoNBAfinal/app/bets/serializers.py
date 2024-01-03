@@ -3,9 +3,6 @@ from .models import Bet, Odds
 from schedule.serializers import ScheduleSerializer
 
 class BetSerializer(serializers.ModelSerializer):
-    match = ScheduleSerializer()
-    selected_team = serializers.CharField(source="selected_team.team_name", read_only=True)
-    user = serializers.CharField(source='user.username', read_only=True)
 
     class Meta:
         model = Bet

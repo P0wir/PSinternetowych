@@ -3,7 +3,6 @@ from .models import Comment
 from matches.serializers import MatchesSerializer
 
 class CommentSerializer(serializers.ModelSerializer):
-    match = MatchesSerializer()
     created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S", read_only=True)
 
     class Meta:
