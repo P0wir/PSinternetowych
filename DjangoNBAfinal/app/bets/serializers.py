@@ -13,6 +13,7 @@ class BetSerializer(serializers.ModelSerializer):
             'id',
             'match',
             'selected_team',
+            'money',
             'user')
 
 class OddsSerializer(serializers.ModelSerializer):

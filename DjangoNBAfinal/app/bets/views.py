@@ -13,7 +13,7 @@ class BetViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = Bet.objects.all()
     search_fields = ['match__team_home__team_name', 'match__team_away__team_name', 'id', 'selected_team', 'user']
-    ordering_fields = ['id','selected_team','user']
+    ordering_fields = ['id','selected_team','user','money']
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend, SearchFilter, OrderingFilter)
 
 
