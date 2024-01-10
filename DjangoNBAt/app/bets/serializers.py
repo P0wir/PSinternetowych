@@ -16,7 +16,6 @@ class BetSerializer(serializers.ModelSerializer):
     def get_user(self, instance):
         if self.context['request'].user.is_authenticated:
             return self.context['request'].user.username
-        return None
 
 class OddsSerializer(serializers.ModelSerializer):
     match = ScheduleSerializer()

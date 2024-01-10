@@ -7,11 +7,15 @@ class Bet(models.Model):
     match = models.ForeignKey(Schedule, on_delete=models.CASCADE, related_name='bet_on_match')
     selected_team = models.ForeignKey(Teams, on_delete=models.CASCADE)
     money = models.FloatField(default=0.0)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         if self.user:
             return f"{self.user.username} - {self.selected_team} in {self.match}"
+
+    class Meta:
+        verbose_name = "Bet"
+        verbose_name_plural = "Bets"
 
     class Meta:
         verbose_name = "Bet"

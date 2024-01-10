@@ -15,7 +15,7 @@ class CommentSerializer(serializers.ModelSerializer):
             'content',
             'created_at')
 
-    def get_user(self):
+    def get_user(self, instance):
         if self.context['request'].user.is_authenticated:
             return self.context['request'].user.username
         else:
