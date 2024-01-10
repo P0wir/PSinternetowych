@@ -3,6 +3,7 @@ from .models import Bet, Odds
 from schedule.serializers import ScheduleSerializer
 
 class BetSerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField()
     class Meta:
         model = Bet
         fields = (
@@ -11,6 +12,11 @@ class BetSerializer(serializers.ModelSerializer):
             'selected_team',
             'money',
             'user')
+
+    def get_user(self, instance):
+        if self.context['request'].user.is_authenticated:
+            return self.context['request'].user.username
+        return None
 
 class OddsSerializer(serializers.ModelSerializer):
     match = ScheduleSerializer()

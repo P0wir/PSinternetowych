@@ -14,4 +14,4 @@ class ReadOnlyOrStaff(BasePermission):
 
 class CreateOrAdminOnly(BasePermission):
     def has_permission(self, request, view):
-        return request.method == 'POST'
+        return request.method == 'POST' and request.user.is_authenticated

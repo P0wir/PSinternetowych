@@ -10,7 +10,8 @@ class Bet(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.user.username} - {self.selected_team} in {self.match}"
+        if self.user:
+            return f"{self.user.username} - {self.selected_team} in {self.match}"
 
     class Meta:
         verbose_name = "Bet"
